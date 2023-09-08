@@ -36,3 +36,11 @@ function duplicateEncode(word) {
     })
     .join('');
 }
+
+// or
+
+const duplicateEncode = s => {
+  const S = [...s.toLowerCase()];
+  const counts = S.reduce((r, c) => (r[c] = (r[c] || 0) + 1, r), {});
+  return S.map(c => counts[c] > 1 ? ')' : '(').join('');
+}
