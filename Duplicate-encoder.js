@@ -11,3 +11,16 @@ Examples:
 "Success"  =>  ")())())"
 "(( @"     =>  "))((" 
 */
+
+
+// Solution
+
+function duplicateEncode(string) {
+  let occurances = string.toLowerCase().split('').reduce(function(occ, cha) {
+    occ[cha] = (occ[cha] || 0) + 1;
+    return occ;
+  }, {});
+  return string.toLowerCase().replace(/[S/s]/g, function(cha){
+    return occurances[cha] > 1 ? ')' : '(';
+  }); 
+}
